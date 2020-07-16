@@ -10,14 +10,20 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '',typeRoute: 'dashboard' },
-    { path: '/manageClients', title: 'Clients',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: 'manageClients'} ,
-   { path: '/addClient', title: 'Add client',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: ''} ,
-    { path: '/accounts', title: 'Accounts',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: 'accounts'} ,
-  { path: '/manageAccounts', title: 'View Accounts ',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: ''} ,
-    { path: '/operations', title: 'Operations',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: 'operations'} ,
+    { path: '/manageEmployees', title: 'Gestion des employés',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: 'manageEmployees'} ,
+   { path: '/addEmployee', title: 'Ajouter un employé',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: ''} ,
+  { path: '/demandeConge', title: 'Demande de congé',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: 'demandeConge'},
+
+  { path: '/demande', title: 'Mes demandes',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: 'demande'},
+  { path: '/status', title: 'status des congés',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: 'status'},
+  { path: '/paie', title: 'Paie',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: 'paie'},
+  { path: '/downloadpaie', title: 'Télécharger mes fiches de paie',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: 'downloadpaie'},
+
+/*  { path: '/manageAccounts', title: 'View Accounts ',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: ''} ,*/
+   /* { path: '/operations', title: 'Operations',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: 'operations'} ,*/
     { path: '/profiles', title: 'Profiles',  icon: 'ni-single-02 text-yellow', class: '', typeRoute: 'profiles'},
 
-   /* { path: '/icons', title: 'Icons',  icon: 'ni-planet text-blue', class: '',typeRoute: 'parent' },*/
+
     { path: '/maps', title: 'Maps',  icon: 'ni-pin-3 text-orange', class: '' },
     { path: '/user-profile', title: 'User profile',  icon: 'ni-single-02 text-yellow', class: '' },
     { path: '/tables', title: 'Tables',  icon: 'ni-bullet-list-67 text-red', class: '' },
@@ -37,13 +43,14 @@ export class SidebarComponent implements OnInit {
 
   public menuItems: any[];
   public isCollapsed = true;
-  openClientsSubMenu:boolean=false;
-  openOperationsSubMenu:boolean=false;
+  openEmployeesSubMenu:boolean=false;
+  openDemande:boolean=false;
   openAccountsSubMenu:boolean=false;
   private countClt: any=0;
   private countAcc: any=0;
   private countOp: any=0;
-
+  user:any
+  fonction:any
   @Output() menuType = new EventEmitter<any>();
   constructor(private router: Router) { }
 
@@ -52,26 +59,28 @@ export class SidebarComponent implements OnInit {
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
+    this.user=localStorage.getItem('user');
+    this.fonction=localStorage.getItem('fonction');
   }
   clickManage(event:any,typeMenu:string){
     if(typeMenu=='clients'){
       if((this.countClt%2) ==0){
-        this.openClientsSubMenu=true;
+        this.openEmployeesSubMenu=true;
         this.countClt++;
       }
       else{
-        this.openClientsSubMenu=false;
+        this.openEmployeesSubMenu=false;
         this.countClt=this.countClt+1;
       }
     }
 
-      if(typeMenu=='operations'){
+      if(typeMenu=='demande'){
         if((this.countOp %2) ==0){
-          this.openOperationsSubMenu=true;
+          this.openDemande=true;
           this.countOp++;
         }
         else{
-          this.openOperationsSubMenu=false;
+          this.openDemande=false;
           this.countOp=this.countAcc+1;
         }
       }

@@ -5,9 +5,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {ClientModule} from './ManageClient/client.module';
-import {AccountsModule} from './Accounts/accounts.module';
-import {OperationsModule} from './operations/operations-module';
+
+import {EmployeeModule} from './ManageEmployee/employee.module';
+import {DemandeModule} from './demandeCongé/demande.module';
+import {PaieModule} from './Paie/paie.module';
 
 
 
@@ -17,7 +18,7 @@ import {OperationsModule} from './operations/operations-module';
     CommonModule,
     RouterModule,
     NgbModule,
-    ClientModule,AccountsModule,OperationsModule
+    EmployeeModule, DemandeModule,PaieModule
 
   ],
   declarations: [

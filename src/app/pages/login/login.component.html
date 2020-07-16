@@ -3,7 +3,7 @@
     <div class="header-body text-center mb-7" style="margin-top: -8%">
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
-          <h1 class="text-white" style="margin-bottom: -10%">Welcome!</h1>
+          <h1 class="text-white" style="margin-bottom: -10%">Bienvenue!</h1>
           <p class="text-lead text-light"></p>
         </div>
       </div>
@@ -23,7 +23,7 @@
 
         <div class="card-body px-lg-5 py-lg-5">
           <div class="text-center text-muted mb-4">
-            <small>sign in with credentials</small>
+            <small>s'authentifier</small>
           </div>
           <form role="form">
             <div class="form-group mb-3">
@@ -39,19 +39,19 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password" name="password" [(ngModel)]="password">
+                <input class="form-control" placeholder="Mot de passe" type="password" name="mot de passe" [(ngModel)]="password">
               </div>
             </div>
 
             <div class="text-center">
-              <button type="button" class="btn btn-primary my-4"  (click)="signIn($event)" >Sign in</button>
+              <button type="button" class="btn btn-primary my-4"  (click)="signIn($event)" >s'authentifier</button>
             </div>
           </form>
         </div>
       </div>
       <div class="row mt-3">
-        <div class="col-6 text-right" style="margin-left: 16%;">
-          <a href="javascript:void(0)" class="text-light" (click)="register($event)"><small>Create new account</small></a>
+        <div class="col-6 text-right" style="margin-left: 8%;">
+          <a href="javascript:void(0)" class="text-light" (click)="register($event)"><small>s'inscrire</small></a>
         </div>
       </div>
     </div>

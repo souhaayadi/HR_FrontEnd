@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import {Router} from '@angular/router';
 import {LoginService} from '../login.service';
 import {User} from '../user.model';
+import {EmployeeService} from '../../components/ManageEmployee/employee.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import {User} from '../user.model';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  constructor(private router :Router,private loginService:LoginService) {}
+  constructor(private employeeService:EmployeeService,private router :Router,private loginService:LoginService) {}
   login:any;
   password:any;
   ngOnInit() {
@@ -25,6 +26,19 @@ export class LoginComponent implements OnInit, OnDestroy {
     if(response){
       localStorage.setItem('user', this.login);
       this.router.navigate(['/dashboard']);
+      if(this.login=='admin'){
+        localStorage.setItem('fonction', 'admin');
+      }
+      else{
+        let nom=localStorage.getItem('user');
+
+        this.employeeService.getEmployeeByName(nom,0,5).subscribe(response=>{
+          response.content.forEach(elem=>{
+
+            localStorage.setItem('fonction', elem.fonction.nom);
+          });
+        })
+      }
 
     }
     }

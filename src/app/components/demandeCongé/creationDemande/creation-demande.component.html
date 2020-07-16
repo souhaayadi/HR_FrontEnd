@@ -1,0 +1,83 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 300px;  background-color: cadetblue;background-size: cover; background-position: center top;">
+
+
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div  class="col-xl-8 order-xl-1" style="margin-left: 15%;">
+      <div class="card bg-secondary shadow" >
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+
+            <div class="col-8">
+
+              <h3   class="mb-0">Créer une demande de congé</h3>
+            </div>
+
+          </div>
+          <hr>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Date début </label>
+                  <input class="form-control" type="date" [(ngModel)]="demande.dateDebut" name="sss3">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Date fin </label>
+                  <input class="form-control" type="date" [(ngModel)]="demande.dateFin" name="sss3">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"> Nombre de jour </label>
+                  <input class="form-control" type="number" [(ngModel)]="demande.nbrJour" name="sss3">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Raison </label>
+                  <input class="form-control" type="text" [(ngModel)]="demande.raison" name="sss3">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"> Type de congé </label>
+                  <p-dropdown [options]="typeList" name="demande" placeholder="Please select..."
+                              [(ngModel)]="demande.type"
+                  ></p-dropdown>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Manager</label>
+                  <p-dropdown [options]="listManager" name="listManager" placeholder="Please select..."
+                              [(ngModel)]="demande.manager"
+                  ></p-dropdown>
+                </div>
+              </div>
+
+            </div>
+
+        </div>
+        <div class="card-body">
+          <div class="col-4 text-right" style="float:right; margin-right:-83px">
+            <div class="col-sm-11 col-md-9 text-right">
+              <button
+                       class="Employee-button-primary"
+                       label="Submit" (click)="saveDemande($event)"
+              >Submit</button>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

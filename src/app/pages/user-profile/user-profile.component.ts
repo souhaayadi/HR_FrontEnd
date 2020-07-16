@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ClientService} from '../../components/ManageClient/client.service';
-import {AccountsService} from '../../components/Accounts/accounts.service';
+
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
-import {Adress, Client} from '../../components/ManageClient/client-model';
-import {Compte} from '../../components/Accounts/accounts-model';
+import {EmployeeService} from '../../components/ManageEmployee/employee.service';
+import {Adresse, Diplome, Employee, Fonction, Service} from '../../components/ManageEmployee/employee-model';
+
 
 @Component({
   selector: 'app-user-profile',
@@ -15,35 +15,48 @@ export class UserProfileComponent implements OnInit {
   private subscription: Subscription;
 
 
-  constructor(public clientService: ClientService, public accountsService:AccountsService ,private activatedRoute:ActivatedRoute) { }
+  constructor(public employeeService: EmployeeService, private activatedRoute:ActivatedRoute) { }
 
   sexelist:any[]=[]
-  cptTypeList:any[]=[]
+  situationFamilialeList:any[]=[]
+  fonctionList:any[]=[]
+  serviceList:any[]=[]
   sexe:string;
-  account:Compte={} as Compte;
-  client: Client ={
-    address:{} as Adress,
-  } as Client;
+  employeeId:any;
+
+  employee: Employee ={
+    address:{} as Adresse,
+    fonction:{} as Fonction,
+    service:{} as Service,
+    diplome:{} as Diplome
+  } as Employee;
   mode = 1;
-  clientId:any;
+
   ngOnInit() {
     this.subscription = this.activatedRoute.params.subscribe((params: any) => {
-      this.clientId = params['id'];
-      if(this.clientId){
-        this.clientService.getClient(this.clientId).subscribe(response=>{
+      this.employeeId = params['id'];
+      if(this.employeeId){
+        this.employeeService.getEmployee(this.employeeId).subscribe(response=>{
 
-
-          this.client=response
-
+          this.employee=response
+          console.log(this.employee)
         })
       }
 
     });
     this.sexelist.push({label: "Men", value: "Men"});
     this.sexelist.push({label: "Women", value: "Women"});
-    this.cptTypeList.push({label: "Current account", value: "CptCourant"});
-    this.cptTypeList.push({label: "Savings account", value: "CptEpargne"});
-    //this.client.sexe="Men"
+    this.situationFamilialeList.push({label: "Marié", value: "Marié"});
+    this.situationFamilialeList.push({label: "Divorcé", value: "Divorcé"});
+    this.situationFamilialeList.push({label: "Célibataire", value: "Célibataire"});
+    this.fonctionList.push({label: "manager", value: "manager"});
+    this.fonctionList.push({label: "cadre", value: "cadre"});
+    this.fonctionList.push({label: "agent", value: "agent"});
+    this.fonctionList.push({label: "assistant", value: "assitant"});
+    this.fonctionList.push({label: "directeur", value: "directeur"});
+    this.serviceList.push({label: "service RH", value: "serviceRH"});
+    this.serviceList.push({label: "departement dev", value: "departement dev"});
+    this.serviceList.push({label: "direction génarale", value: "direction génarale"});
 
 
   }

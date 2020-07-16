@@ -5,7 +5,7 @@
   <div class="container-fluid d-flex align-items-center">
     <div class="row">
       <div class="col-lg-12 col-md-10">
-        <h2 class="display-2 text-white">{{client.nom + ' profile'}} </h2>
+        <h2 class="display-2 text-white">{{employee.nom + ' profile'}} </h2>
 
       </div>
     </div>
@@ -18,7 +18,7 @@
         <div class="card card-profile shadow">
           <div class="row justify-content-center">
             <div class="col-lg-3 order-lg-2">
-              <div class="card-profile-image" (click)="viewProfile(client.code)">
+              <div class="card-profile-image" (click)="viewProfile(employee.code)">
                 <a href="javascript:void(0)">
                   <img src="assets/img/brand/avatar.png" class="rounded-circle">
                 </a>
@@ -27,16 +27,16 @@
           </div>
           <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
             <div class="d-flex justify-content-between">
-              <a  class="btn btn-sm btn-info mr-4" (click)="openConnectdropDown($event,client.code)">Connect</a>
-              <div *ngIf="openConnectDropDown && codeClt==client.code" >
+              <a  class="btn btn-sm btn-info mr-4" (click)="openConnectdropDown($event,employee.code)">Connect</a>
+              <div *ngIf="openConnectDropDown && codeClt==employee.code" >
                 <div class="popup">
-                  <span class="popuptext" id="myPopup1">{{client.address.phoneNumber}}</span>
+                  <span class="popuptext" id="myPopup1">{{employee.address.phoneNumber}}</span>
                 </div>
               </div>
-              <a href="javascript:void(0)" class="btn btn-sm btn-default float-right" (click)="openMessgaedropDown($event,client.code)" style="margin-left: 50%;">Message</a>
-              <div *ngIf="openMsgDropDown && codeClt==client.code">
+              <a href="javascript:void(0)" class="btn btn-sm btn-default float-right" (click)="openMessgaedropDown($event,employee.code)" style="margin-left: 50%;">Message</a>
+              <div *ngIf="openMsgDropDown && codeClt==employee.code">
                 <div class="popup">
-                  <span class="popuptext" id="myPopup2">{{client.address.phoneNumber}}</span>
+                  <span class="popuptext" id="myPopup2">{{employee.address.phoneNumber}}</span>
                 </div>
               </div>
             </div>
@@ -51,20 +51,20 @@
             </div>
             <div class="text-center">
               <h3>
-                {{client.nom + '  '+ client.prenom}}<span class="font-weight-light"></span>
+                {{employee.nom + '  '+ employee.prenom}}<span class="font-weight-light"></span>
               </h3>
               <div class="h5 font-weight-300">
-                <i class="ni location_pin mr-2"></i>{{client.dateNaiss+' years old'}}
+                <i class="ni location_pin mr-2"></i>{{employee.dateNaiss+' years old'}}
               </div>
               <div class="h5 font-weight-300">
-                <i class="ni location_pin mr-2"></i>{{client.address.principalAdress +','+   client.address.country}}
+                <i class="ni location_pin mr-2"></i>{{employee.address.principalAdress +','+   employee.address.country}}
               </div>
 
               <div>
-                <i class="ni education_hat mr-2"></i>{{client.email}}
+                <i class="ni education_hat mr-2"></i>{{employee.email}}
               </div>
               <hr class="my-4" />
-              <p>{{client.comment}}</p>
+              <p>{{employee.comment}}</p>
 
             </div>
           </div>
@@ -81,39 +81,77 @@
             </div>
             <div class="card-body">
               <form>
-                <h6 class="heading-small text-muted mb-4">Client informations</h6>
+                <h6 class="heading-small text-muted mb-4">Informations personnelles </h6>
                 <div class="pl-lg-4">
 
                   <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">First name</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" name="sss" [(ngModel)]="client.nom">
+                        <label class="form-control-label" for="input-first-name">Nom</label>
+                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="nom" name="sss" [(ngModel)]="employee.nom">
                       </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-last-name">Last name</label>
-                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" name="sss1" value="Jesse" [(ngModel)]="client.prenom">
+                        <label class="form-control-label" for="input-last-name">Prenom</label>
+                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="prenom" name="sss1" value="Jesse" [(ngModel)]="employee.prenom">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Matricule</label>
+                        <input type="text" id="input-matricule" class="form-control form-control-alternative" placeholder="matricule" name="sss1" value="Jesse" [(ngModel)]="employee.matricule">
                       </div>
                     </div>
                   </div>
                   <div class="row">
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div >
-                        <label class="form-control-label" >sexe</label>
+                        <label class="form-control-label" >Sexe</label>
                         <div>
-                          <p-dropdown [options]="sexelist" name="sexe"
-                                      [(ngModel)]="client.sexe" (onChange)="changeSexe()"
+                          <p-dropdown [options]="sexelist" name="sexe" placeholder="Please select..."
+                                      [(ngModel)]="employee.sexe"
                           ></p-dropdown>
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div class="form-group">
-                        <label class="form-control-label">Birth date</label>
-                        <input class="form-control" type="date" [(ngModel)]="client.dateNaiss" name="sss3">
+                        <label class="form-control-label">Date de naissance </label>
+                        <input class="form-control" type="date" [(ngModel)]="employee.dateNaiss" name="sss3">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label">Cin </label>
+                        <input class="form-control" type="number" [(ngModel)]="employee.cin" name="sss3">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+
+                    <div class="col-lg-4">
+                      <div >
+                        <div class="form-group">
+                          <label class="form-control-label">Date d'entrée </label>
+                          <input class="form-control" type="date" [(ngModel)]="employee.dateEntree" name="sss3">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label">Situation familiale </label>
+                        <p-dropdown [options]="situationFamilialeList" name="fonction" placeholder="Please select..."
+                                    [(ngModel)]="employee.situationFamiliale"
+                        ></p-dropdown>
+
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label">Nombre d'enfant </label>
+                        <input class="form-control" type="number" [(ngModel)]="employee.nbrEnfants" name="sss3">
                       </div>
                     </div>
 
@@ -121,45 +159,45 @@
                 </div>
                 <hr class="my-4" />
                 <!-- address -->
-                <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                <h6 class="heading-small text-muted mb-4">Contact </h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-md-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-address">Email</label>
-                        <input  class="form-control form-control-alternative" placeholder="email" name="sss4"  type="email" [(ngModel)]="client.email">
+                        <input  class="form-control form-control-alternative" placeholder="email" name="sss4"  type="email" [(ngModel)]="employee.email">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-address">address</label>
-                        <input id="input-address" class="form-control form-control-alternative" name="sss5" placeholder="Home address"  type="text" [(ngModel)]="client.address.principalAdress">
+                        <label class="form-control-label" for="input-address">Adresse</label>
+                        <input id="input-address" class="form-control form-control-alternative" name="sss5" placeholder="adresse"  type="text" [(ngModel)]="employee.address.principalAdress">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-control-phone" for="input-phone">phone number</label>
-                        <input id="input-phone" class="form-control form-control-alternative" name="phone" placeholder="phone number"  type="text" [(ngModel)]="client.address.phoneNumber">
+                        <label class="form-control-phone" for="input-phone">Numéro de téléphone</label>
+                        <input id="input-phone" class="form-control form-control-alternative" name="phone" placeholder="numéro de téléphone"  type="number" [(ngModel)]="employee.numTel">
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-4">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-city">City</label>
-                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" [(ngModel)]="client.address.city" name="city">
+                        <label class="form-control-label" for="input-city">Ville</label>
+                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="ville" [(ngModel)]="employee.address.city" name="city">
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-country">Country</label>
-                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" [(ngModel)]="client.address.country" name="country">
+                        <label class="form-control-label" for="input-country">Pays</label>
+                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="pays" [(ngModel)]="employee.address.country" name="country">
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-country">Postal code</label>
-                        <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code" [(ngModel)]="client.address.postalCode" name="postalCode">
+                        <label class="form-control-label" for="input-country">Code Postal</label>
+                        <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="code postal" [(ngModel)]="employee.address.postalCode" name="postalCode">
                       </div>
                     </div>
                   </div>
@@ -167,37 +205,42 @@
                 <hr class="my-4" />
 
 
-                <!-- address -->
-                <h6  *ngIf="clientId==undefined" class="heading-small text-muted mb-4">Acount informations</h6>
-                <div class="pl-lg-4">
+
+                <h6   class="heading-small text-muted mb-4">Diplome</h6>
+                <div class="pl-lg-4" >
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-address">Code</label>
-                        <input  class="form-control form-control-alternative" placeholder="Code" name="code" [(ngModel)]="account.codeCompte" type="number" >
+                        <label class="form-control-label" for="input-address">nom de diplome</label>
+                        <input  class="form-control form-control-alternative" placeholder="Code" name="code" [(ngModel)]="employee.diplome.libelle" type="text" >
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-address">Creation Date</label>
-                        <input class="form-control form-control-alternative" name="creationDate" [(ngModel)]="account.dateCreation" type="date">
+                        <label class="form-control-label" for="input-address">Type de diplome</label>
+                        <input class="form-control form-control-alternative" name="type diplome" [(ngModel)]="employee.diplome.typeDiplome" type="text">
                       </div>
                     </div>
 
                   </div>
+                  <h6   class="heading-small text-muted mb-4">Poste</h6>
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-city">balance</label>
-                        <input type="text"  class="form-control form-control-alternative" placeholder="balance" [(ngModel)]="account.solde" name="balance">
+                        <label class="form-control-label" for="input-city">Fonction</label>
+                        <div>
+                          <p-dropdown [options]="fonctionList" name="fonction" placeholder="Please select..."
+                                      [(ngModel)]="employee.fonction.nom"
+                          ></p-dropdown>
+                        </div>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div >
-                        <label class="form-control-label" >Account type</label>
+                        <label class="form-control-label" >Service</label>
                         <div>
-                          <p-dropdown [options]="cptTypeList" name="typeCpt"
-                                      [(ngModel)]="account.typeCpt"
+                          <p-dropdown [options]="serviceList" name="service" placeholder="Please select..."
+                                      [(ngModel)]="employee.service.libelle"
                           ></p-dropdown>
                         </div>
                       </div>
@@ -207,15 +250,26 @@
                 </div>
                 <hr class="my-4" />
                 <!-- Description -->
-                <h6 class="heading-small text-muted mb-4">Comment</h6>
+                <h6 class="heading-small text-muted mb-4">Commentaire</h6>
                 <div class="pl-lg-4">
                   <div class="form-group">
-                    <label>Comment</label>
-                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words ..." name="comment" [(ngModel)]="client.comment">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                    <label>Commentaire</label>
+                    <textarea rows="4" class="form-control form-control-alternative" placeholder="Commentaire ..." name="comment" [(ngModel)]="employee.comment"></textarea>
                   </div>
                 </div>
               </form>
-
+              <div class="col-4 text-right" style="float:right; margin-right:-83px">
+                <div class="col-sm-11 col-md-9 text-right">
+                  <button  *ngIf="employeeId==undefined"
+                           class="Employee-button-primary"
+                           label="Submit" (click)="saveEmployee($event)"
+                  >Submit</button>
+                  <button  *ngIf="employeeId!=undefined"
+                           class="Employee-button-primary"
+                           label="Submit" (click)="editEmployee($event)"
+                  >Submit</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

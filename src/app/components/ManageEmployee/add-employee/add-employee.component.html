@@ -1,0 +1,214 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 300px;  background-color: cadetblue;background-size: cover; background-position: center top;">
+
+
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-8 order-xl-1" style="margin-left: 15%;">
+      <div class="card bg-secondary shadow" >
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3  *ngIf="employeeId==undefined" class="mb-0">Ajouter un
+                employé</h3>
+              <h3  *ngIf="employeeId!=undefined" class="mb-0">modifier un employé</h3>
+            </div>
+
+          </div>
+        </div>
+        <div class="card-body">
+          <form>
+            <h6 class="heading-small text-muted mb-4">Informations personnelles </h6>
+            <div class="pl-lg-4">
+
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Nom</label>
+                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="nom" name="sss" [(ngModel)]="employee.nom">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Prenom</label>
+                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="prenom" name="sss1" value="Jesse" [(ngModel)]="employee.prenom">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Matricule</label>
+                    <input type="text" id="input-matricule" class="form-control form-control-alternative" placeholder="matricule" name="sss1" value="Jesse" [(ngModel)]="employee.matricule">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+
+                <div class="col-lg-4">
+                  <div >
+                    <label class="form-control-label" >Sexe</label>
+                    <div>
+                    <p-dropdown [options]="sexelist" name="sexe" placeholder="Please select..."
+                                [(ngModel)]="employee.sexe"
+                                ></p-dropdown>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Date de naissance </label>
+                    <input class="form-control" type="date" [(ngModel)]="employee.dateNaiss" name="sss3">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Cin </label>
+                    <input class="form-control" type="number" [(ngModel)]="employee.cin" name="sss3">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+
+                <div class="col-lg-4">
+                  <div >
+                    <div class="form-group">
+                      <label class="form-control-label">Date d'entrée </label>
+                      <input class="form-control" type="date" [(ngModel)]="employee.dateEntree" name="sss3">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Situation familiale </label>
+                    <p-dropdown [options]="situationFamilialeList" name="fonction" placeholder="Please select..."
+                                [(ngModel)]="employee.situationFamiliale"
+                    ></p-dropdown>
+
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Nombre d'enfant </label>
+                    <input class="form-control" type="number" [(ngModel)]="employee.nbrEnfants" name="sss3">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- address -->
+            <h6 class="heading-small text-muted mb-4">Contact </h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Email</label>
+                    <input  class="form-control form-control-alternative" placeholder="email" name="sss4"  type="email" [(ngModel)]="employee.email">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Adresse</label>
+                    <input id="input-address" class="form-control form-control-alternative" name="sss5" placeholder="adresse"  type="text" [(ngModel)]="employee.address.principalAdress">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-phone" for="input-phone">Numéro de téléphone</label>
+                    <input id="input-phone" class="form-control form-control-alternative" name="phone" placeholder="numéro de téléphone"  type="number" [(ngModel)]="employee.numTel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-city">Ville</label>
+                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="ville" [(ngModel)]="employee.address.city" name="city">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-country">Pays</label>
+                    <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="pays" [(ngModel)]="employee.address.country" name="country">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-country">Code Postal</label>
+                    <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="code postal" [(ngModel)]="employee.address.postalCode" name="postalCode">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+
+
+
+            <h6   class="heading-small text-muted mb-4">Diplome</h6>
+            <div class="pl-lg-4" >
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">nom de diplome</label>
+                    <input  class="form-control form-control-alternative" placeholder="Code" name="code" [(ngModel)]="employee.diplome.libelle" type="text" >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Type de diplome</label>
+                    <input class="form-control form-control-alternative" name="type diplome" [(ngModel)]="employee.diplome.typeDiplome" type="text">
+                  </div>
+                </div>
+
+              </div>
+              <h6   class="heading-small text-muted mb-4">Poste</h6>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-city">Fonction</label>
+                    <div>
+                      <p-dropdown [options]="fonctionList" name="fonction" placeholder="Please select..."
+                                  [(ngModel)]="employee.fonction.nom"
+                      ></p-dropdown>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div >
+                    <label class="form-control-label" >Service</label>
+                    <div>
+                      <p-dropdown [options]="serviceList" name="service" placeholder="Please select..."
+                                  [(ngModel)]="employee.service.libelle"
+                      ></p-dropdown>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Description -->
+            <h6 class="heading-small text-muted mb-4">Commentaire</h6>
+            <div class="pl-lg-4">
+              <div class="form-group">
+                <label>Commentaire</label>
+                <textarea rows="4" class="form-control form-control-alternative" placeholder="Commentaire ..." name="comment" [(ngModel)]="employee.comment"></textarea>
+              </div>
+            </div>
+          </form>
+          <div class="col-4 text-right" style="float:right; margin-right:-83px">
+            <div class="col-sm-11 col-md-9 text-right">
+              <button  *ngIf="employeeId==undefined"
+                      class="Employee-button-primary"
+                      label="Submit" (click)="saveEmployee($event)"
+                      >Submit</button>
+              <button  *ngIf="employeeId!=undefined"
+                       class="Employee-button-primary"
+                       label="Submit" (click)="editEmployee($event)"
+              >Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

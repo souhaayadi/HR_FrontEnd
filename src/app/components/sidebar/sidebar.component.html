@@ -7,7 +7,7 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" routerLinkActive="active" [routerLink]="['/dashboard']">
-      <img src="./assets/img/brand/bank.png"  class="navbar-brand-img" alt="...">
+      <img src="./assets/img/brand/hr-logo.png"  class="navbar-brand-img" alt="...">
     </a>
     <!-- User -->
     <ul class="nav align-items-center d-md-none">
@@ -91,7 +91,7 @@
       <!-- Navigation -->
       <ul class="navbar-nav">
         <div *ngFor="let menuItem of menuItems">
-          <li class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='dashboard'"  >
+          <li class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='dashboard' && user=='admin'"  >
 
               <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link" >
                 <div class="icon icon-shape  text-blue" style="margin-left: -6%;">   <i class="fas fa-desktop"></i></div>
@@ -99,7 +99,7 @@
                   {{menuItem.title}}
               </a>
           </li>
-          <li  class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='manageClients'">
+          <li  class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='manageEmployees' && user=='admin'">
 
             <a routerLinkActive="active"  class="nav-link" (click)="clickManage($event,'clients')" >
               <div class="icon icon-shape  text-blue" style="margin-left: -6%;">
@@ -109,52 +109,47 @@
               {{menuItem.title}}
 
             </a>
-            <div *ngIf="openClientsSubMenu">
-            <a routerLinkActive="active" [routerLink]="['/addClient']" class="nav-link" style="margin-left: 22%;">
-              {{'Add client'}}
+            <div *ngIf="openEmployeesSubMenu">
+            <a routerLinkActive="active" [routerLink]="['/addEmployee']" class="nav-link" style="margin-left: 22%;">
+              {{'Ajout employée'}}
             </a>
-              <a routerLinkActive="active" [routerLink]="['/manageClients']" class="nav-link" style="margin-left: 22%;">
+              <a routerLinkActive="active" [routerLink]="['/manageEmployees']" class="nav-link" style="margin-left: 22%;">
 
-                {{'Manage clients'}}
+                {{'Gestion des employée'}}
               </a>
             </div>
           </li>
-          <li  class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='accounts'">
+          <li  class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='demandeConge' && (user!='admin')" >
 
             <a routerLinkActive="active"  class="nav-link" (click)="clickManage($event,'accounts')" >
               <div class="icon icon-shape  text-blue" style="margin-left: -6%;"> <i class="fa fa-money-bill"></i></div>
-              {{'Accounts'}}
+              {{'Demande de Congé'}}
             </a>
             <div *ngIf="openAccountsSubMenu">
 
-              <a routerLinkActive="active" [routerLink]="['/manageAccounts']" class="nav-link" style="margin-left: 22%;">
-
-                {{'View accounts'}}
+              <a routerLinkActive="active" [routerLink]="['/demandeConge']" class="nav-link" style="margin-left: 22%;">
+                {{'Créer un demande de congé'}}
               </a>
             </div>
           </li>
-          <li  class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='operations'">
+          <li  class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='demande' && (fonction=='manager'|| fonction=='admin')" >
 
-            <a routerLinkActive="active"  class="nav-link" (click)="clickManage($event,'operations')" >
-              <div class="icon icon-shape  text-blue" style="margin-left: -6%;">  <i class="fa fa-tasks"></i></div>
-              {{menuItem.title}}
+            <a routerLinkActive="active"  class="nav-link" (click)="clickManage($event,'demande')" >
+              <div class="icon icon-shape  text-blue" style="margin-left: -6%;"> <i class="fa fa-money-bill"></i></div>
+              {{'Mes demandes'}}
             </a>
-            <div *ngIf="openOperationsSubMenu">
-              <a routerLinkActive="active" [routerLink]="['/transaction']" class="nav-link" style="margin-left: 22%;">
-                {{'Transaction'}}
+            <div *ngIf="openDemande">
+
+              <a routerLinkActive="active" [routerLink]="['/demande']" class="nav-link" style="margin-left: 22%;">
+                {{'Mes demandes'}}
               </a>
-              <a routerLinkActive="active" [routerLink]="['/transfer']" class="nav-link" style="margin-left: 22%;">
-                {{'Transfer'}}
-              </a>
-              <a routerLinkActive="active" [routerLink]="['/versement']" class="nav-link" style="margin-left: 22%;">
-                {{'Payment'}}
-              </a>
-              <a routerLinkActive="active" [routerLink]="['/history']" class="nav-link" style="margin-left: 22%;">
-                {{'History'}}
-              </a>
+             <!-- <a routerLinkActive="active" [routerLink]="['/status']" class="nav-link" style="margin-left: 22%;">
+                {{'status des demandes'}}
+              </a>-->
             </div>
           </li>
-          <li  class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='profiles'">
+
+          <li  class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='profiles' && user=='admin'">
 
             <a routerLinkActive="active" [routerLink]="['/profiles']" class="nav-link"  (click)="clickProfiles($event)">
               <div class="icon icon-shape  text-blue" style="margin-left: -6%;">
@@ -164,6 +159,33 @@
               {{menuItem.title}}
             </a>
 
+          </li>
+          <li  class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='status' && user!='admin'">
+          <a routerLinkActive="active" [routerLink]="['/status']" class="nav-link"  >
+            <div class="icon icon-shape  text-blue" style="margin-left: -6%;">
+
+
+              <i class="fas fa-users"></i>   </div>
+            {{'status des demandes'}}
+          </a>
+          </li>
+          <li  class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='paie' && user=='admin'">
+            <a routerLinkActive="active" [routerLink]="['/paie']" class="nav-link"  >
+              <div class="icon icon-shape  text-blue" style="margin-left: -6%;">
+
+
+                <i class="fas fa-users"></i>   </div>
+              {{'Paie'}}
+            </a>
+          </li>
+          <li  class="{{menuItem.class}} nav-item" *ngIf="menuItem.typeRoute=='downloadpaie' && user!='admin'">
+            <a routerLinkActive="active" [routerLink]="['/downloadpaie']" class="nav-link"  >
+              <div class="icon icon-shape  text-blue" style="margin-left: -6%;">
+
+
+                <i class="fas fa-users"></i>   </div>
+              {{'Télécharger mes fiches de paie  '}}
+            </a>
           </li>
 
         </div>
