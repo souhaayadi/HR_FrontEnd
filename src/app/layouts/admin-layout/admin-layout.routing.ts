@@ -31,7 +31,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'demande',           component:DemandeComponent,canActivate: [AuthGuard]  },
   { path: 'status',           component:StatusComponent,canActivate: [AuthGuard]  },
   { path: 'paie',           component:FichePaieComponent,canActivate: [AuthGuard]  },
-  { path: 'paie/:id',           component:FichePaieComponent,canActivate: [AuthGuard]  },
+  { path: 'paie/:name',           component:FichePaieComponent,canActivate: [AuthGuard]  },
   { path: 'downloadpaie',           component:DownloadPaieComponent,canActivate: [AuthGuard]  },
 
 

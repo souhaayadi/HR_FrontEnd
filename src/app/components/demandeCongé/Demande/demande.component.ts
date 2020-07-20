@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DemandeService} from '../demande.service';
 import {EmployeeService} from '../../ManageEmployee/employee.service';
-import {Adresse, Diplome, Employee, Fonction, Service} from '../../ManageEmployee/employee-model';
+import {Adresse, Diplome, ElementPaie, Employee, Fonction, Service} from '../../ManageEmployee/employee-model';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
@@ -17,7 +17,8 @@ export class DemandeComponent implements OnInit {
     address:{} as Adresse,
     fonction:{} as Fonction,
     service:{} as Service,
-    diplome:{} as Diplome
+    diplome:{} as Diplome,
+    elementPaie:{} as ElementPaie
   } as Employee;
   ngOnInit(): void {
     this.getCongesList();

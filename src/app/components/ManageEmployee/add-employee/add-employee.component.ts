@@ -1,5 +1,5 @@
 
-import {Adresse, Diplome, Employee, Fonction, Service} from '../employee-model';
+import {Adresse, Diplome, ElementPaie, Employee, Fonction, Service} from '../employee-model';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
@@ -26,7 +26,8 @@ export class AddEmployeeComponent implements OnInit {
     address:{} as Adresse,
     fonction:{} as Fonction,
     service:{} as Service,
-    diplome:{} as Diplome
+    diplome:{} as Diplome,
+    elementPaie:{} as ElementPaie
   } as Employee;
 
   ngOnInit() {

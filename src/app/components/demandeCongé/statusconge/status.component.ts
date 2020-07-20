@@ -15,7 +15,7 @@ export class StatusComponent implements OnInit {
     address:{} as Adresse,
     fonction:{} as Fonction,
     service:{} as Service,
-    diplome:{} as Diplome
+    diplome:{} as Diplome,
   } as Employee;
   ngOnInit(): void {
     this.getEmployee();

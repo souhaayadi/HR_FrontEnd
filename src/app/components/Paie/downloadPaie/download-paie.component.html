@@ -17,7 +17,7 @@
           <div class="row" style="margin-top:2%">
             <div class="col-lg-3">
 
-            <span> fiche de paie de mois de juillet :       <i class="fa fa-file-pdf"></i></span>
+            <span> fiche de paie de mois de juillet :     <a (click)="downloadPaie($event)"><i class="fa fa-file-pdf" ></i></a> </span>
 
 
 
@@ -30,4 +30,212 @@
       </div>
     </div>
   </div>
+</div>
+<div id="123" *ngIf="download" #123 class="content">
+
+  <h1>Bank Account Details</h1>
+  <hr>
+
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="owner"></label>
+    <div class="col-sm-4">{{'sssss'}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="bankAccountName"></label>
+    <div class="col-sm-4">{{'dd'}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="bankAccountNumber"></label>
+    <div class="col-sm-4 ">{{'rrrrr'}}</div>
+  </div>
+<!--  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="sortCode"></label>
+    <div class="col-sm-4">{{sortCode}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="rollNumber"></label>
+    <div class="col-sm-4">{{rollNumber}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="bankName"></label>
+    <div class="col-sm-4">{{bankName}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="addressLine1"></label>
+    <div class="col-sm-4">{{addressLine1}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="addressLine2"></label>
+    <div class="col-sm-4">{{addressLine2}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="addressLine3"></label>
+    <div class="col-sm-4">{{addressLine3}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="Town"></label>
+    <div class="col-sm-4">{{town}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="postCode"></label>
+    <div class="col-sm-4">{{postCode}}</div>
+  </div>
+  <h1>Payment Details</h1>
+  <hr>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="sourceOfPayment"></label>
+    <div class="col-sm-4">{{paymentSource}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="payment_type"></label>
+    <div class="col-sm-4">{{payment_type}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="frequency"></label>
+    <div class="col-sm-4">{{frequency}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="firstDate"></label>
+    <div class="col-sm-4">{{firstDate| date: 'dd/MM/yyyy'}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="nextDate"></label>
+    <div class="col-sm-4">{{nextDate| date: 'dd/MM/yyyy'}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="method"></label>
+    <div class="col-sm-4">{{method}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="displayName"></label>
+    <div class="col-sm-4">{{displayName}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="investmentAccount"></label>
+    <div class="col-sm-4">{{investmentAccount}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="isEligible"></label>
+    <div class="col-sm-4">{{isEligible}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="source"></label>
+    <div class="col-sm-4">{{source}}</div>
+  </div>
+  <h1 *ngIf="isPayerDetails">Payer Details</h1>
+  <hr>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="thirdPartyType"></label>
+    <div class="col-sm-4">{{thirdPartyType}}</div>
+  </div>
+  <div *ngIf="isSectionOne">
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name" translate="title"></label>
+      <div class="col-sm-4">{{title}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name" translate="firstName"></label>
+      <div class="col-sm-4">{{firstName}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name" translate="lastName"></label>
+      <div class="col-sm-4">{{lastName}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name" translate="gender"></label>
+      <div class="col-sm-4">{{gender}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name" translate="dateOfBirth"></label>
+      <div class="col-sm-4">{{dateOfBirth}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name" translate="ukResident"></label>
+      <div class="col-sm-4">{{ukResident}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name" translate="nationality"></label>
+      <div class="col-sm-4">{{nationality}}</div>
+    </div>
+  </div>
+  <div *ngIf="isSectionTwo">
+    <div class="row" *ngIf="isSectionThree">
+      <label class="col-sm-4 label-portfolio-name" translate="controllerType"></label>
+      <div class="col-sm-4">{{controllerType}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name" translate="fullName"></label>
+      <div class="col-sm-4">{{fullName}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name" translate="typeOfEntity"></label>
+      <div class="col-sm-4">{{typeOfEntity}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name"
+             translate="registeredOfficeInCountryOfCorporation"></label>
+      <div class="col-sm-4">{{registeredOfficeInCountryOfCorporation}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name" translate="registeredNumber"></label>
+      <div class="col-sm-4">{{registeredNumber}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name" translate="relevantCompanyRegistry"></label>
+      <div class="col-sm-4">{{relevantCompanyRegistry}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name" translate="nameOfDirectors"></label>
+      <div class="col-sm-4">{{nameOfDirectors}}</div>
+    </div>
+    <div class="row">
+      <label class="col-sm-4 label-portfolio-name"
+             translate="nameOfPrincipleBeneficialOwners"></label>
+      <div class="col-sm-4">{{nameOfPrincipleBeneficialOwners}}</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="addressLine1"></label>
+    <div class="col-sm-4">{{line1}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="addressLine1"></label>
+    <div class="col-sm-4">{{line2}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="addressLine1"></label>
+    <div class="col-sm-4">{{line3}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="Town"></label>
+    <div class="col-sm-4">{{address_town}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="postCode"></label>
+    <div class="col-sm-4">{{address_postCode}}</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="country"></label>
+    <div class="col-sm-4">{{country}}</div>
+  </div>
+  <h1>Investment Allocation Details</h1>
+  <hr>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="cachAccount"></label>
+    <div class="col-sm-4"></div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="Cash"></label>
+    <div class="col-sm-4">{{cachAccount}}%</div>
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name" translate="investmentAccountName"></label>
+    <div class="col-sm-4">{{investmentAccountName}}</div>
+
+  </div>
+  <div class="row">
+    <label class="col-sm-4 label-portfolio-name">{{productName}}</label>
+    <div class="col-sm-4">{{batchAllocationPertcentage}}</div>
+  </div>-->
 </div>

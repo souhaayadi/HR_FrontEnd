@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {EmployeeService} from '../../components/ManageEmployee/employee.service';
-import {Adresse, Diplome, Employee, Fonction, Service} from '../../components/ManageEmployee/employee-model';
+import {Adresse, Diplome, ElementPaie, Employee, Fonction, Service} from '../../components/ManageEmployee/employee-model';
 
 
 @Component({
@@ -28,7 +28,8 @@ export class UserProfileComponent implements OnInit {
     address:{} as Adresse,
     fonction:{} as Fonction,
     service:{} as Service,
-    diplome:{} as Diplome
+    diplome:{} as Diplome,
+     elementPaie:{} as ElementPaie
   } as Employee;
   mode = 1;
 

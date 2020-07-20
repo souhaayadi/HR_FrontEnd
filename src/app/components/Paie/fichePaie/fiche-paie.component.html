@@ -10,12 +10,15 @@
           <div class="row align-items-center">
             <div class="col-8">
 
-              <h3   class="mb-0">bulletins de Paie   </h3>
+              <h3   class="mb-0">bulletins de Paie </h3>
             </div>
 
           </div>
+          <hr>
+          <br>
+
           <div class="row" style="margin-top:2%">
-            <div class="col-lg-3">
+            <div class="col-lg-3" style="border-right: double;">
             <div *ngFor=" let employee of listEmployees" let index="i">
 
               <ul class="navbar-nav">
@@ -28,8 +31,37 @@
             </div>
 
           </div>
+            <div class="col-sm-9">
 
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Mois </label>
+                    <input class="form-control" type="text" [(ngModel)]="employee.elementPaie.Mois" name="sss3">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Montant </label>
+                    <input class="form-control" type="text" [(ngModel)]="employee.elementPaie.Montant" name="sss3">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 text-right" >
+                  <div class="col-sm-11 col-md-12 text-right">
+
+                    <button
+                      class="Employee-button-primary"
+                      label="Submit" (click)="soumettre($event)"
+                    >Submit</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
+
 
         </div>
 

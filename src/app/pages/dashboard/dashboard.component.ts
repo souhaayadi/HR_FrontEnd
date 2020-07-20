@@ -53,10 +53,6 @@ export class DashboardComponent implements OnInit {
 		});
   }
 
-
-
-
-
   public updateOptions(type:any) {
     if(type==true){
       this.salesChart.data.datasets[0].data = this.data;

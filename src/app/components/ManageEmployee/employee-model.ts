@@ -22,7 +22,15 @@ export class Employee {
    fonction:Fonction;
    service:Service;
   comment:string;
+  elementPaie:ElementPaie;
 
+}
+
+export class ElementPaie {
+
+  Mois:string
+
+  Montant:number;
 }
 export class Adresse {
   postalCode: string;
